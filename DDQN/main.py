@@ -34,8 +34,8 @@ hyperparameters = {"gamma":0.99,
                    "plot":False
                    }
 
-env_name = "CartPole-v1"
-# env_name = "Acrobot-v1"                                
+# env_name = "CartPole-v1"
+env_name = "Acrobot-v1"                                
 
 
 # env_name = hyperparameter_set['env_name']
@@ -52,7 +52,8 @@ for i in range(num_runs):
     if length[i]<total_episodes:
         returns = returns + (total_episodes-length[i])*[best_return]
     soft_return[i,:] = np.array(returns).reshape(-1,total_episodes)
-    print(f"Regret in episode {i}: {regrets[i]:.4f}")
+    print(f"Regret in run {i+1}: {regrets[i]:.4f}")
+    print("-" * 100) 
 
 min_length = min(length)
 avg_regret = sum(regrets)/num_runs
