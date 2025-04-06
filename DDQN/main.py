@@ -22,7 +22,7 @@ import random
 from utils import train
 
 hyperparameters = {"gamma":0.99,
-                   "hidden_size":256,
+                   "hidden_size":64,
                    "learning_rate":1e-4,
                    "polyak_tau":1e-3,
                    "softmax_tau":0.1,
@@ -60,7 +60,7 @@ avg_regret = sum(regrets)/num_runs
 print(f"Average regret : {avg_regret:.4f}")
 print(f"Average regret per episode: {avg_regret/total_episodes:.4f}")
 
-np.savetxt(env_name+'_'+hyperparameters["dueling_type"]+'.csv', soft_return, delimiter=',')
+# np.savetxt(env_name+'_'+hyperparameters["dueling_type"]+'.csv', soft_return, delimiter=',')
 
 mean_data = np.mean(soft_return, axis=0)
 variance_data = np.var(soft_return, axis=0)
@@ -74,5 +74,5 @@ plt.plot()
 plt.xlabel('Episode')
 plt.ylabel('Return')
 plt.title(f'Dueling DQN {hyperparameters["dueling_type"]} - Returns per Episode')
-plt.savefig(env_name+'_'+hyperparameters["dueling_type"]+'.pdf')
+# plt.savefig(env_name+'_'+hyperparameters["dueling_type"]+'.pdf')
 plt.show()
